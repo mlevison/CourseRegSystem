@@ -1,12 +1,17 @@
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class CourseSession {
     private final String dept;
     private final String courseNum;
     private final ArrayList<Student> studentList = new ArrayList<Student>();
-    public CourseSession(String inDept, String inCourseNumber) {
+    private final Date startDate;
+    public CourseSession(String inDept, String inCourseNumber, Date inStartDate) {
         dept = inDept;
         courseNum = inCourseNumber;
+        startDate = inStartDate;
     }
 
     public String getDept() {
@@ -23,5 +28,13 @@ public class CourseSession {
 
     public void enroll(Student student) {
         studentList.add(student);
+    }
+
+    public Date getEndDate() {
+        GregorianCalendar calendar = new GregorianCalendar();
+        calendar.setTime(startDate);
+        int numberOfDays = 16 * 7;
+        calendar.add(Calendar.DAY_OF_YEAR, numberOfDays);
+        return calendar.getTime();
     }
 }
