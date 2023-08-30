@@ -37,4 +37,20 @@ public class CourseSession {
         calendar.add(Calendar.DAY_OF_YEAR, numberOfDays);
         return calendar.getTime();
     }
+
+    public String getRosterReport() {
+        StringBuilder buffer = new StringBuilder();
+
+        Student student = studentList.get(0);
+        buffer.append(student.getName());
+        buffer.append('\n');
+
+        student = studentList.get(1);
+        buffer.append(student.getName());
+        buffer.append('\n');
+
+        buffer.append(studentList.size());
+
+        return buffer.toString();
+    }
 }

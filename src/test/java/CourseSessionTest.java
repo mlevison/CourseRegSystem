@@ -44,4 +44,14 @@ public class CourseSessionTest {
         Date endDate = new Date(year,3,23);
         assertEquals(endDate, session.getEndDate());
     }
+
+    @Test
+    public void testRosterReport(){
+        CourseSession session = new CourseSession("ENGL", "102", meaninglessDate);
+        session.enroll(new Student("A"));
+        session.enroll(new Student("B"));
+
+        String expectedRosterReport = "A\nB\n2";
+        assertEquals(expectedRosterReport, session.getRosterReport());
+    }
 }
